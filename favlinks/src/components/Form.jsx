@@ -12,6 +12,8 @@ function Form({addLink}){
         }
 
         addLink(data);
+        setName("");
+        setURL("");
     }
 
     return(
