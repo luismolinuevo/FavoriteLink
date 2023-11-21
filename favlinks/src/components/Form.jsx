@@ -1,12 +1,27 @@
-function Form(){
+import { useState } from "react"
+
+function Form({addLink}){
+    const [name, setName] = useState("");
+    const [URL, setURL] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            name,
+            URL
+        }
+
+        addLink(data);
+    }
+
     return(
-        <form>
-            <label for="linkName">Link Name:</label>
-            <input type="text" id="linkName" name="linkName" value="" />
+        <form onSubmit={handleSubmit}>
+            <label>Link Name:</label>
+            <input type="text" id="linkName" name="linkName" value={name} onChange={(e) => setName(e.target.value)}/>
             <br />
             <br />
-            <label for="URL">Link URL:</label>
-            <input type="text" id="linkURL" name="linkURL" value=""/>
+            <label>Link URL:</label>
+            <input type="text" id="linkURL" name="linkURL" value={URL} onChange={(e) => setURL(e.target.value)}/>
             <br/>
             <br />
             <input type="submit" value="Submit"></input>
@@ -14,4 +29,4 @@ function Form(){
     )
 }
 
-export default Form
+export default Form;
